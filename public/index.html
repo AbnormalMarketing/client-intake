@@ -1,38 +1,473 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0A0A0A" />
-    <meta name="description" content="Get started with Abnormal Marketing - Client Intake Form" />
-    <title>Get Started | Abnormal Marketing</title>
-    <link rel="icon" type="image/jpeg" href="/logo.jpg" />
-    <link rel="apple-touch-icon" href="/logo.jpg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Meta Pixel Code -->
-    <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '4261282567445456');
-      fbq('track', 'PageView');
-    </script>
-    <noscript>
-      <img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=4261282567445456&ev=PageView&noscript=1"/>
-    </noscript>
-    <!-- End Meta Pixel Code -->
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work With Abnormal — Apply</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- ═══════════════════════════════════════════════════════════════
+     META PIXEL — paste your Pixel ID below (Events Manager → Data sources)
+     ═══════════════════════════════════════════════════════════════ -->
+<script>
+window.META_PIXEL_ID = "4261282567445456";
+(function(){
+  if(!window.META_PIXEL_ID || window.META_PIXEL_ID.indexOf("PASTE_")===0) return;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', window.META_PIXEL_ID);
+  fbq('track', 'PageView');
+})();
+</script>
+<!-- End Meta Pixel -->
+
+<style>
+  :root{
+    --bg:#0d0d10; --panel:#16161b; --line:#26262e;
+    --ink:#f4f1ea; --mut:#9a978f;
+    --signal:#e8b04b; --ember:#f0674f;
+    --ok:#5fd08a;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Bricolage Grotesque",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.5;
+    display:flex; justify-content:center; padding:32px 18px 64px;
+  }
+  .wrap{width:100%; max-width:560px}
+  @media(min-width:768px){
+    .wrap{max-width:720px}
+    body{padding:48px 40px 80px}
+    h1{font-size:clamp(32px,3.5vw,46px)}
+  }
+  @media(min-width:1200px){
+    .wrap{max-width:860px}
+  }
+  .kicker{
+    font-family:"Space Mono",monospace; font-size:12px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--signal); margin:0 0 10px;
+  }
+  h1{font-size:clamp(27px,5.6vw,38px); font-weight:800; line-height:1.06; margin:0 0 10px}
+  .sub{color:var(--mut); margin:0 0 24px; font-size:16px}
+  .proof{
+    font-family:"Space Mono",monospace; font-size:11px; color:var(--mut);
+    letter-spacing:.05em; margin:0 0 26px; border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line); padding:12px 0; display:flex; gap:18px; flex-wrap:wrap;
+  }
+  .proof b{color:var(--ink)}
+  .steps{display:flex; gap:8px; margin:0 0 22px; font-family:"Space Mono",monospace; font-size:11px; color:var(--mut); align-items:center}
+  .dot{width:26px; height:4px; border-radius:2px; background:var(--line); transition:background .25s}
+  .dot.on{background:var(--signal)}
+  form{display:grid; gap:16px}
+  label{display:block; font-size:13px; font-weight:600; margin:0 0 6px}
+  label .req{color:var(--ember)}
+  .hint{font-family:"Space Mono",monospace; font-size:11px; color:var(--mut); font-weight:400; margin-left:6px}
+  input,select,textarea{
+    width:100%; background:var(--panel); border:1px solid var(--line);
+    color:var(--ink); border-radius:10px; padding:13px 14px; font-size:15px;
+    font-family:inherit; transition:border-color .15s, box-shadow .15s;
+  }
+  textarea{resize:vertical; min-height:88px}
+  input:focus,select:focus,textarea:focus{
+    outline:none; border-color:var(--signal); box-shadow:0 0 0 3px rgba(232,176,75,.14);
+  }
+  .err{color:var(--ember); font-size:12px; margin-top:5px; display:none; font-family:"Space Mono",monospace}
+  .row-btns{display:flex; gap:12px; margin-top:6px}
+  button{
+    background:var(--signal); color:#111; border:0; cursor:pointer;
+    padding:15px 20px; border-radius:10px; font-size:16px; font-weight:800;
+    font-family:inherit; transition:transform .08s, filter .15s; flex:1;
+  }
+  button.ghost{background:transparent; color:var(--mut); border:1px solid var(--line); flex:0 0 auto; padding:15px 18px}
+  button:hover{filter:brightness(1.05)}
+  button:active{transform:translateY(1px)}
+  button:disabled{opacity:.6; cursor:not-allowed}
+  .note{font-family:"Space Mono",monospace; font-size:11px; color:var(--mut); text-align:center; margin-top:2px}
+  .step{display:none} .step.active{display:grid; gap:16px}
+  .done{display:none; text-align:center; padding:40px 10px}
+  .done .tick{
+    width:60px;height:60px;border-radius:50%;background:rgba(95,208,138,.12);
+    border:1px solid var(--ok); color:var(--ok); font-size:30px; line-height:60px;
+    margin:0 auto 20px; font-family:"Space Mono",monospace;
+  }
+  .done h2{font-size:26px;font-weight:800;margin:0 0 8px}
+  .done p{color:var(--mut);margin:0 auto; max-width:420px}
+  .banner{
+    display:none; background:rgba(240,103,79,.1); border:1px solid var(--ember);
+    color:var(--ember); font-family:"Space Mono",monospace; font-size:12px;
+    padding:12px 14px; border-radius:10px; margin-bottom:20px; line-height:1.5;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div id="banner" class="banner"></div>
+
+  <div id="view-form">
+    <p class="kicker">Abnormal Marketing</p>
+    <h1 id="head">Let's get your offer in front of everyone who needs it.</h1>
+    <p class="sub" id="subhead">Tell me a little about you. If we're a fit, we build the machine that turns ad spend into paying customers &mdash; on repeat.</p>
+    <div class="proof">
+      <span><b>$15M+</b> ad spend managed</span>
+      <span><b>1,000+</b> entrepreneurs scaled</span>
+      <span><b>13</b> years in the game</span>
+    </div>
+
+    <div class="steps">
+      <span class="dot on" id="d1"></span><span class="dot" id="d2"></span><span class="dot" id="d3"></span><span class="dot" id="d4"></span>
+      <span id="stepnum" style="margin-left:6px">Step 1 of 4</span>
+    </div>
+
+    <form id="intake" novalidate>
+
+      <!-- STEP 1: contact -->
+      <div class="step active" id="step1">
+        <div>
+          <label for="first_name">First name <span class="req">*</span></label>
+          <input id="first_name" name="first_name" autocomplete="given-name" placeholder="Jane">
+          <div class="err" data-for="first_name">Please enter your first name.</div>
+        </div>
+        <div>
+          <label for="email">Email <span class="req">*</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="you@brand.com">
+          <div class="err" data-for="email">Enter a valid email.</div>
+        </div>
+        <div>
+          <label for="whatsapp">WhatsApp number <span class="req">*</span><span class="hint">incl. country code</span></label>
+          <input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" placeholder="+1 555 123 4567">
+          <div class="err" data-for="whatsapp">Enter a valid WhatsApp number with country code.</div>
+        </div>
+        <div class="row-btns"><button type="button" id="next1">Let's go &rarr;</button></div>
+        <p class="note">Four quick screens. You'll be done before your coffee's cold.</p>
+      </div>
+
+      <!-- STEP 2: where you're at -->
+      <div class="step" id="step2">
+        <div>
+          <label for="ran_ads">Have you run paid ads before? <span class="req">*</span></label>
+          <select id="ran_ads" name="ran_ads">
+            <option value="">Select&hellip;</option>
+            <option>Yeah &mdash; and they worked</option>
+            <option>Yeah &mdash; but they flopped</option>
+            <option>Nope, just getting started</option>
+          </select>
+          <div class="err" data-for="ran_ads">Pick one.</div>
+        </div>
+        <div>
+          <label for="business_manager">Is your Meta Business Manager set up? <span class="req">*</span></label>
+          <select id="business_manager" name="business_manager">
+            <option value="">Select&hellip;</option>
+            <option>Yep, all set</option>
+            <option>Sort of &mdash; it's a mess</option>
+            <option>No / not sure what that is</option>
+          </select>
+          <div class="err" data-for="business_manager">Pick one.</div>
+        </div>
+        <div>
+          <label for="email_marketing">Do you have email marketing running? <span class="req">*</span></label>
+          <select id="email_marketing" name="email_marketing">
+            <option value="">Select&hellip;</option>
+            <option>Yes &mdash; actively</option>
+            <option>I've got a list but barely use it</option>
+            <option>Not yet</option>
+          </select>
+          <div class="err" data-for="email_marketing">Pick one.</div>
+        </div>
+        <div>
+          <label for="monthly_revenue">Current monthly revenue <span class="req">*</span><span class="hint">the business you want to run ads for</span></label>
+          <select id="monthly_revenue" name="monthly_revenue">
+            <option value="">Select a range&hellip;</option>
+            <option>Pre-revenue / just starting</option>
+            <option>Under $5k / mo</option>
+            <option>$5k &ndash; $20k / mo</option>
+            <option>$20k &ndash; $50k / mo</option>
+            <option>$50k &ndash; $100k / mo</option>
+            <option>$100k+ / mo</option>
+          </select>
+          <div class="err" data-for="monthly_revenue">Pick a range.</div>
+        </div>
+        <div>
+          <label for="budget">Monthly ad budget <span class="req">*</span></label>
+          <select id="budget" name="budget">
+            <option value="">Select a range&hellip;</option>
+            <option>Under $1k / mo</option>
+            <option>$1k &ndash; $3k / mo</option>
+            <option>$3k &ndash; $10k / mo</option>
+            <option>$10k+ / mo</option>
+            <option>Not running ads yet</option>
+          </select>
+          <div class="err" data-for="budget">Pick a range.</div>
+        </div>
+        <div class="row-btns">
+          <button type="button" class="ghost" data-back>&larr;</button>
+          <button type="button" id="next2">Continue &rarr;</button>
+        </div>
+        <p class="note">No wrong answers here &mdash; this just tells me exactly what you need.</p>
+      </div>
+
+      <!-- STEP 3: your offer -->
+      <div class="step" id="step3">
+        <div>
+          <label for="business">What do you sell? <span class="req">*</span></label>
+          <input id="business" name="business" placeholder="e.g. a $500 online coaching program">
+          <div class="err" data-for="business">Tell me what you're selling.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div>
+            <label for="price_offer">Price of your main offer <span class="req">*</span></label>
+            <input id="price_offer" name="price_offer" placeholder="e.g. $497">
+            <div class="err" data-for="price_offer">Enter a price.</div>
+          </div>
+          <div>
+            <label for="cogs">Cost to deliver it <span class="req">*</span><span class="hint">your COGS</span></label>
+            <input id="cogs" name="cogs" placeholder="e.g. $80">
+            <div class="err" data-for="cogs">Enter your cost.</div>
+          </div>
+        </div>
+        <div>
+          <label for="vision">If we doubled your sales, what would that change for you? <span class="req">*</span></label>
+          <textarea id="vision" name="vision" placeholder="Get specific &mdash; the hires, the launch, the freedom. This is the stuff we're about to make real."></textarea>
+          <div class="err" data-for="vision">Paint me the picture &mdash; a sentence or two.</div>
+        </div>
+        <div>
+          <label for="timeline">How soon do you want to start? <span class="req">*</span></label>
+          <select id="timeline" name="timeline">
+            <option value="">Select&hellip;</option>
+            <option>I'm ready right now &#128293;</option>
+            <option>In the next 30 days</option>
+            <option>Next quarter</option>
+            <option>Just exploring for now</option>
+          </select>
+          <div class="err" data-for="timeline">Pick one.</div>
+        </div>
+        <div class="row-btns">
+          <button type="button" class="ghost" data-back>&larr;</button>
+          <button type="button" id="next3">Continue &rarr;</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: your customer & setup -->
+      <div class="step" id="step4">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div>
+            <label for="website">Website <span class="req">*</span></label>
+            <input id="website" name="website" placeholder="brand.com">
+            <div class="err" data-for="website">Enter your website.</div>
+          </div>
+          <div>
+            <label for="instagram">Instagram <span class="hint">optional</span></label>
+            <input id="instagram" name="instagram" placeholder="@brand">
+          </div>
+        </div>
+        <div>
+          <label for="ideal_customer">Who is your ideal customer? <span class="req">*</span></label>
+          <input id="ideal_customer" name="ideal_customer" placeholder="e.g. Women 25–45 interested in fitness &amp; nutrition">
+          <div class="err" data-for="ideal_customer">Describe your ideal buyer.</div>
+        </div>
+        <div>
+          <label for="usp">What makes you different from competitors? <span class="req">*</span></label>
+          <input id="usp" name="usp" placeholder="Your edge, your method, what they can't get elsewhere">
+          <div class="err" data-for="usp">Tell me your edge.</div>
+        </div>
+        <div>
+          <label for="traffic_source">Where are most of your customers coming from right now? <span class="req">*</span></label>
+          <select id="traffic_source" name="traffic_source">
+            <option value="">Select&hellip;</option>
+            <option>Organic social media</option>
+            <option>Word of mouth / referrals</option>
+            <option>Existing paid ads</option>
+            <option>Email list</option>
+            <option>Not getting consistent customers yet</option>
+            <option>Multiple channels</option>
+          </select>
+          <div class="err" data-for="traffic_source">Pick one.</div>
+        </div>
+        <div>
+          <label for="pixel_installed">Do you have a Meta Pixel installed on your site? <span class="req">*</span></label>
+          <select id="pixel_installed" name="pixel_installed">
+            <option value="">Select&hellip;</option>
+            <option>Yes, it's set up and firing</option>
+            <option>I think so but not sure</option>
+            <option>No</option>
+            <option>I don't have a website</option>
+          </select>
+          <div class="err" data-for="pixel_installed">Pick one.</div>
+        </div>
+        <div>
+          <label for="extra_notes">Anything else you want me to know? <span class="hint">optional</span></label>
+          <textarea id="extra_notes" name="extra_notes" placeholder="Past results, specific goals, context that helps me understand your situation&hellip;"></textarea>
+        </div>
+        <div class="row-btns">
+          <button type="button" class="ghost" data-back>&larr;</button>
+          <button type="submit" id="submit">Send it &mdash; I'm ready &rarr;</button>
+        </div>
+        <p class="note">I review every single one personally.</p>
+      </div>
+    </form>
+  </div>
+
+  <div id="view-done" class="done">
+    <div class="tick">&#10003;</div>
+    <h2>You're in. Let's get to work. &#127881;</h2>
+    <p>I read every application personally. If we're a fit, I'll reach out on WhatsApp or email within 1&ndash;2 business days &mdash; so keep your phone close.</p>
+  </div>
+
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE  (ends in /exec)
+   ═══════════════════════════════════════════════════════════════ */
+const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwL0WzBpMUBgpAoC7GHVl53_9bpqfsZTUAICfMgoROYJ6ysEHYS9F-33il_Sr2Noumpww/exec";
+const AIRTABLE_KEY  = "patO6KUSCRJPO1EKU.8c6a43287cb705f7eb18cb97b84cfd90242795e55e8832f67cfb0ff393c55d3b";
+const AIRTABLE_BASE = "app0VxmxZ09GZ46AT";
+const AIRTABLE_TABLE = "tblcYi9kJTFnP2Cis";
+/* ═══════════════════════════════════════════════════════════════ */
+
+const form   = document.getElementById("intake");
+const banner = document.getElementById("banner");
+const configured = WEBHOOK_URL && !WEBHOOK_URL.startsWith("PASTE_");
+const session = "s_" + Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+let current = 1;
+
+if(!configured){
+  banner.style.display="block";
+  banner.textContent="\u26A0 Config not set \u2014 paste your Apps Script Web App URL in the script block, then redeploy. Submits won't reach the sheet until you do.";
+}
+
+const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const phoneRe = /^[+]?[\d\s().-]{7,}$/;
+const val = id => document.getElementById(id).value.trim();
+
+function invalid(id){ const el=document.getElementById(id); const m=form.querySelector('.err[data-for="'+id+'"]'); if(m)m.style.display="block"; el.style.borderColor="var(--ember)"; }
+function clr(id){ const el=document.getElementById(id); const m=form.querySelector('.err[data-for="'+id+'"]'); if(m)m.style.display="none"; el.style.borderColor=""; }
+["first_name","email","whatsapp","ran_ads","business_manager","email_marketing","monthly_revenue","budget","business","price_offer","cogs","vision","timeline","website","instagram","ideal_customer","usp","traffic_source","pixel_installed","extra_notes"].forEach(id=>{
+  const el=document.getElementById(id); if(el) el.addEventListener("input",()=>clr(id)); if(el) el.addEventListener("change",()=>clr(id));
+});
+
+function pixel(event, params, custom){
+  try{
+    if(window.fbq && window.META_PIXEL_ID && window.META_PIXEL_ID.indexOf("PASTE_")!==0){
+      custom ? fbq('trackCustom', event, params||{}) : fbq('track', event, params||{});
+    }
+  }catch(err){ console.error("pixel error", err); }
+}
+
+function send(payload){
+  if(!configured) return Promise.resolve();
+  return fetch(WEBHOOK_URL,{
+    method:"POST", mode:"no-cors",
+    headers:{"Content-Type":"text/plain;charset=utf-8"},
+    body: JSON.stringify(payload)
+  }).catch(err=>console.error("send failed",err));
+}
+
+function sendAirtable(data){
+  return fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE}/${encodeURIComponent(AIRTABLE_TABLE)}`,{
+    method:"POST",
+    headers:{"Authorization":"Bearer "+AIRTABLE_KEY,"Content-Type":"application/json"},
+    body: JSON.stringify({ records:[{ fields:{
+      "Business Name": data.first_name,
+      "Email": data.email,
+      "WhatsApp": data.whatsapp,
+      "Website": data.website,
+      "Instagram": data.instagram,
+      "What They Sell": data.business,
+      "Offer Price": data.price_offer,
+      "COGS": data.cogs,
+      "Monthly Revenue": data.monthly_revenue,
+      "Meta Ads Experience": data.ran_ads,
+      "Monthly Ad Budget": data.budget,
+      "Main Goal": data.vision,
+      "Timeline": data.timeline,
+      "Ideal Customer": data.ideal_customer,
+      "USP": data.usp,
+      "Traffic Source": data.traffic_source,
+      "Pixel Installed": data.pixel_installed,
+      "Notes": data.extra_notes
+    }}]})
+  }).catch(err=>console.error("airtable failed",err));
+}
+
+function collect(status){
+  return {
+    session, status,
+    first_name: val("first_name"), email: val("email"), whatsapp: val("whatsapp"),
+    ran_ads: val("ran_ads"), business_manager: val("business_manager"), email_marketing: val("email_marketing"),
+    monthly_revenue: val("monthly_revenue"), budget: val("budget"),
+    business: val("business"), price_offer: val("price_offer"), cogs: val("cogs"),
+    vision: val("vision"), timeline: val("timeline"),
+    website: val("website"), instagram: val("instagram"),
+    ideal_customer: val("ideal_customer"), usp: val("usp"),
+    traffic_source: val("traffic_source"), pixel_installed: val("pixel_installed"),
+    extra_notes: val("extra_notes")
+  };
+}
+
+const HEADS = {
+  1:["Let's get your offer in front of everyone who needs it.","Tell me a little about you. If we're a fit, we build the machine that turns ad spend into paying customers \u2014 on repeat."],
+  2:["Where are you right now?","This tells me exactly what you need \u2014 so when we talk, we hit the ground running."],
+  3:["Now the fun part \u2014 your offer.","Tell me what you sell, what it costs you, and what winning looks like for you."],
+  4:["Last one \u2014 your customer.","This is what I use to build your marketing plan before we even get on a call."]
+};
+
+function showStep(n){
+  current=n;
+  [1,2,3,4].forEach(i=> document.getElementById("step"+i).classList.toggle("active", i===n));
+  document.getElementById("d2").classList.toggle("on", n>=2);
+  document.getElementById("d3").classList.toggle("on", n>=3);
+  document.getElementById("d4").classList.toggle("on", n>=4);
+  document.getElementById("stepnum").textContent = "Step "+n+" of 4";
+  document.getElementById("head").textContent = HEADS[n][0];
+  document.getElementById("subhead").textContent = HEADS[n][1];
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function validate(ids){
+  let ok=true;
+  ids.forEach(([id,pass])=> pass?clr(id):(invalid(id),ok=false));
+  return ok;
+}
+
+document.getElementById("next1").addEventListener("click", ()=>{
+  if(!validate([["first_name",val("first_name").length>0],["email",emailRe.test(val("email"))],["whatsapp",phoneRe.test(val("whatsapp"))]])) return;
+  send(collect("started")); // capture the lead even if they don't finish
+  pixel('ApplicationStarted', {content_name:'Intake Step 1'}, true);
+  showStep(2);
+});
+
+document.getElementById("next2").addEventListener("click", ()=>{
+  if(!validate([["ran_ads",val("ran_ads").length>0],["business_manager",val("business_manager").length>0],["email_marketing",val("email_marketing").length>0],["monthly_revenue",val("monthly_revenue").length>0],["budget",val("budget").length>0]])) return;
+  showStep(3);
+});
+
+document.getElementById("next3").addEventListener("click", ()=>{
+  if(!validate([["business",val("business").length>0],["price_offer",val("price_offer").length>0],["cogs",val("cogs").length>0],["vision",val("vision").length>0],["timeline",val("timeline").length>0]])) return;
+  showStep(4);
+});
+
+document.querySelectorAll("[data-back]").forEach(b=> b.addEventListener("click", ()=>showStep(current-1)));
+
+form.addEventListener("submit", async (e)=>{
+  e.preventDefault();
+  if(!validate([["website",val("website").length>0],["ideal_customer",val("ideal_customer").length>0],["usp",val("usp").length>0],["traffic_source",val("traffic_source").length>0],["pixel_installed",val("pixel_installed").length>0]])) return;
+  if(!configured){ banner.style.display="block"; banner.textContent="\u26A0 Can't submit: Apps Script URL still has a placeholder value."; return; }
+  const btn=document.getElementById("submit");
+  btn.disabled=true; btn.textContent="Sending\u2026";
+  const payload = collect("completed");
+  await Promise.all([send(payload), sendAirtable(payload)]);
+  pixel('Lead', {content_name:'Intake Application', currency:'USD'});
+  document.getElementById("view-form").style.display="none";
+  document.getElementById("view-done").style.display="block";
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+</script>
+</body>
 </html>
